@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+{% if found == True %}
+<div class="results-container">
+
+    <div id="title">
+        <h1>Your results:</h1>
+    </div>
+
+    <div id="result-table">
+        <div class="row">
+            <div class="col-4">
+                <h2>Ingredient name</h2>
+            </div>
+            <div class="col-8">
+                <h2>Potential danger</h2>    
+            </div>        
+        </div>
+
+    {% for key, value in subs_dict.items %}
+        <div class="row">
+            <div class="col-4">
+                {{ key }}
+            </div>
+            <div class="col-8">
+                {{ value }}
+            </div>        
+        </div>
+    {% endfor %}
+{% endif %}
+
+{% if found == False %}
+<h3 style="color: white; margin-top: 2vh; margin-left: 2vw;">None of these ingredients exist in our database.</h3>
+{% endif %}
+
+    <div id="restart_button">
+        <div class="button">
+            <a href="{% url 'adding' %}" class="btn btn-lg btn-outline-light align-self-center" style="margin-top: 5vw">restart</a></div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
